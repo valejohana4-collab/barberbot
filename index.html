@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>BarberBot</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#1e1e1e;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+.chat{
+width:420px;
+background:#2c2c2c;
+padding:20px;
+border-radius:15px;
+}
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+border:none;
+}
+button{
+margin-top:10px;
+width:100%;
+padding:10px;
+background:#d4af37;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+#respuesta{
+margin-top:20px;
+background:#3b3b3b;
+padding:15px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="chat">
+<h2>🤖 BarberBot</h2>
+
+<p>Haz una pregunta sobre la barbería.</p>
+
+<input id="pregunta" placeholder="Escribe aquí...">
+
+<button onclick="responder()">Preguntar</button>
+
+<div id="respuesta"></div>
+
+</div>
+
+<script>
+
+const respuestas={
+"horario":"Estamos abiertos de lunes a sábado de 9:00 a.m. a 7:00 p.m.",
+"precio":"El corte clásico cuesta $35.000 COP.",
+"barba":"El arreglo de barba cuesta $20.000 COP.",
+"combo":"El combo corte + barba cuesta $60.000 COP.",
+"nequi":"Sí, aceptamos Nequi.",
+"domingo":"Los domingos estamos cerrados.",
+"wifi":"Sí, ofrecemos Wi-Fi gratuito.",
+"cita":"Puedes reservar por WhatsApp o en la barbería.",
+"tarde":"Si llegas más de 15 minutos tarde la cita puede cancelarse.",
+"niños":"Los menores de 12 años tienen 15% de descuento."
+}
+
+function responder(){
+
+let texto=document.getElementById("pregunta").value.toLowerCase();
+
+let respuesta="Lo siento, esa información no está en mi base de conocimiento.";
+
+for(let clave in respuestas){
+
+if(texto.includes(clave)){
+respuesta=respuestas[clave];
+break;
+}
+
+}
+
+document.getElementById("respuesta").innerHTML=respuesta;
+
+}
+
+</script>
+
+</body>
+</html>
